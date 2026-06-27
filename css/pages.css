@@ -72,9 +72,10 @@ body.page {
   background: var(--white);
 }
 
-body.page .header {
-  color: var(--black);
-  background: rgba(255, 255, 255, 0.97);
+body.page .header,
+body.page .header.header--scrolled {
+  color: #000000;
+  background: #ffffff;
 }
 
 body.page .header .top-bun,

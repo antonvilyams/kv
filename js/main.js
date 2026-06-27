@@ -9,13 +9,9 @@
   function updateHeader() {
     if (!header) return;
 
-    const heroBottom = heroSection
-      ? heroSection.offsetTop + heroSection.offsetHeight
-      : window.innerHeight;
-    const isOverHero = window.scrollY < heroBottom - header.offsetHeight;
-
-    header.classList.toggle('header--dynamic', isOverHero);
-    header.classList.toggle('header--scrolled', !isOverHero);
+    const atHeroTop = heroSection && window.scrollY < 80;
+    header.classList.toggle('header--dynamic', atHeroTop);
+    header.classList.toggle('header--scrolled', !atHeroTop);
   }
 
   function openMobileMenu() {

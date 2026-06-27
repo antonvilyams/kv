@@ -138,13 +138,14 @@ ul {
 }
 
 .header--dynamic {
-  color: var(--white);
+  background: transparent;
+  color: #ffffff;
 }
 
 .header--dynamic .header-burger-box .top-bun,
 .header--dynamic .header-burger-box .patty,
 .header--dynamic .header-burger-box .bottom-bun {
-  background: var(--white);
+  background: #ffffff;
 }
 
 .header--scrolled .header-burger-box .top-bun,
@@ -155,13 +156,11 @@ ul {
 
 .header--scrolled {
   background: #ffffff;
-  color: var(--black);
+  color: #000000;
 }
 
 .header-inner {
   width: 100%;
-  max-width: var(--site-max-width);
-  margin: 0 auto;
   padding: 1.25rem var(--site-gutter);
   min-height: var(--header-height);
   display: flex;
@@ -171,21 +170,19 @@ ul {
 .header-inner--mobile {
   display: none;
   justify-content: space-between;
-  max-width: none;
 }
 
 .header-title-nav-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
   width: 100%;
   min-height: 40px;
 }
 
 .header-nav {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 auto;
+  z-index: 1;
 }
 
 .header-title {
@@ -196,6 +193,7 @@ ul {
   text-align: center;
   white-space: nowrap;
   pointer-events: none;
+  z-index: 0;
 }
 
 .header-title a {
@@ -210,12 +208,13 @@ ul {
 }
 
 .header-social {
-  flex: 1 1 0;
+  flex: 0 0 auto;
+  margin-left: auto;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 0.85rem;
-  min-width: 0;
+  z-index: 1;
 }
 
 .header-social a {
@@ -269,6 +268,16 @@ ul {
 
 .header-nav-item a:hover {
   opacity: 0.65;
+}
+
+body.homepage .header.header--dynamic {
+  background: transparent;
+  color: #ffffff;
+}
+
+body.homepage .header.header--scrolled {
+  background: #ffffff;
+  color: #000000;
 }
 
 @media (max-width: 1100px) and (min-width: 768px) {
@@ -442,10 +451,19 @@ ul {
 }
 
 /* Press carousel — bright-inverse (dark) theme */
-.section--press {
-  background: #000000;
+.section--press,
+.section--inverse {
+  background-color: #000000;
   color: #ffffff;
+}
+
+.section--press {
   padding: 5vmax 0 7vmax;
+}
+
+.section--press .carousel-quote,
+.section--inverse .carousel-quote {
+  color: #ffffff;
 }
 
 .press-carousel {
@@ -485,7 +503,7 @@ ul {
   font-family: 'neuehaas-roman', sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #ffffff;
+  color: inherit;
   margin: 0;
   padding: 0 0.5rem;
 }
@@ -759,8 +777,9 @@ ul {
 }
 
 /* Footer */
-.footer {
-  background: #000000;
+.site-wrapper .footer,
+#footer.footer {
+  background-color: #000000;
   color: #ffffff;
   padding: 8vw var(--site-gutter) 6vw;
 }
