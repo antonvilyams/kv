@@ -458,11 +458,7 @@ body.homepage .header.header--scrolled {
 }
 
 .section--press {
-  padding: 5vmax 0 7vmax;
-}
-
-.section--press {
-  padding: 5vmax 0 7vmax;
+  padding: 4vmax 0 4.5vmax;
 }
 
 .press-carousel {
@@ -532,24 +528,6 @@ body.homepage .header.header--scrolled {
 
 .carousel-arrow--next {
   right: var(--site-gutter);
-}
-
-.carousel-progress {
-  position: relative;
-  margin-top: 30px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
-}
-
-.carousel-progress-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #ffffff;
-  transition: transform 0.4s ease;
-  will-change: transform;
 }
 
 @media (min-width: 768px) {

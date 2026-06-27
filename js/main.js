@@ -43,7 +43,6 @@
 
   if (carousel) {
     const track = carousel.querySelector('.carousel-track');
-    const progressBar = carousel.querySelector('.carousel-progress-bar');
     const prevBtn = carousel.querySelector('.carousel-arrow--prev');
     const nextBtn = carousel.querySelector('.carousel-arrow--next');
     const gap = 20;
@@ -78,20 +77,10 @@
       return slide.getBoundingClientRect().width + gap;
     }
 
-    function getLogicalIndex() {
-      return ((index - total) % total + total) % total;
-    }
-
     function setTrackPosition(animate) {
       const step = getSlideStep();
       track.style.transition = animate ? 'transform 0.4s ease' : 'none';
       track.style.transform = `translateX(-${index * step}px)`;
-
-      if (progressBar) {
-        const logical = getLogicalIndex();
-        progressBar.style.width = `${100 / total}%`;
-        progressBar.style.transform = `translateX(${logical * 100}%)`;
-      }
     }
 
     function normalizeIndex() {
