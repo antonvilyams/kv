@@ -60,27 +60,39 @@ FOOTER_COLS = [
     [("Certifications", "certifications.html"), ("Press", "press.html"), ("Uxcel", "https://app.uxcel.com/ux/kristinavilyams", True)],
 ]
 
+HEADER_SOCIAL = """
+          <div class="header-social">
+            <a href="https://www.instagram.com/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M46.91,25.816c-0.073-1.597-0.326-2.687-0.697-3.641c-0.383-0.986-0.896-1.823-1.73-2.657c-0.834-0.834-1.67-1.347-2.657-1.73c-0.954-0.371-2.045-0.624-3.641-0.697C36.585,17.017,36.074,17,32,17s-4.585,0.017-6.184,0.09c-1.597,0.073-2.687,0.326-3.641,0.697c-0.986,0.383-1.823,0.896-2.657,1.73c-0.834,0.834-1.347,1.67-1.73,2.657c-0.371,0.954-0.624,2.045-0.697,3.641C17.017,27.415,17,27.926,17,32c0,4.074,0.017,4.585,0.09,6.184c0.073,1.597,0.326,2.687,0.697,3.641c0.383,0.986,0.896,1.823,1.73,2.657c0.834,0.834,1.67,1.347,2.657,1.73c0.954,0.371,2.045,0.624,3.641,0.697C27.415,46.983,27.926,47,32,47s4.585-0.017,6.184-0.09c1.597-0.073,2.687-0.326,3.641-0.697c0.986-0.383,1.823-0.896,2.657-1.73c0.834-0.834,1.347-1.67,1.73-2.657c0.371-0.954,0.624-2.045,0.697-3.641C46.983,36.585,47,36.074,47,32S46.983,27.415,46.91,25.816z M32,24.297c-4.254,0-7.703,3.449-7.703,7.703c0,4.254,3.449,7.703,7.703,7.703c4.254,0,7.703-3.449,7.703-7.703C39.703,27.746,36.254,24.297,32,24.297z M32,37c-2.761,0-5-2.239-5-5c0-2.761,2.239-5,5-5s5,2.239,5,5C37,34.761,34.761,37,32,37z M40.007,22.193c-0.994,0-1.8,0.806-1.8,1.8c0,0.994,0.806,1.8,1.8,1.8c0.994,0,1.8-0.806,1.8-1.8C41.807,22.999,41.001,22.193,40.007,22.193z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44H46v-9.5C46,29.8,45,26.2,39.5,26.2z"/></svg>
+            </a>
+          </div>"""
+
 CONTACT_FORM_HTML = """
 <div class="contact-form contact-form--page" id="contact-form">
   <form action="#" method="POST" data-form="contact">
     <div class="contact-form-field">
-      <label class="contact-form-label" for="page-contact-fname">Name</label>
+      <label class="contact-form-label">Name</label>
       <div class="contact-form-name-row">
         <div class="contact-form-subfield">
-          <input id="page-contact-fname" class="contact-form-input" type="text" name="firstName" placeholder="First Name" required>
+          <span class="contact-form-sublabel">First Name <span class="required">(required)</span></span>
+          <input id="page-contact-fname" class="contact-form-input" type="text" name="firstName" autocomplete="given-name" required>
         </div>
         <div class="contact-form-subfield">
-          <input id="page-contact-lname" class="contact-form-input" type="text" name="lastName" placeholder="Last Name" required>
+          <span class="contact-form-sublabel">Last Name <span class="required">(required)</span></span>
+          <input id="page-contact-lname" class="contact-form-input" type="text" name="lastName" autocomplete="family-name" required>
         </div>
       </div>
     </div>
     <div class="contact-form-field">
-      <label class="contact-form-label" for="page-contact-email">Email</label>
-      <input id="page-contact-email" class="contact-form-input" type="email" name="email" placeholder="Email" required>
+      <label class="contact-form-label">Email <span class="required">(required)</span></label>
+      <input id="page-contact-email" class="contact-form-input" type="email" name="email" autocomplete="email" required>
     </div>
     <div class="contact-form-field">
-      <label class="contact-form-label" for="page-contact-message">Message</label>
-      <textarea id="page-contact-message" class="contact-form-input contact-form-textarea" name="message" placeholder="Message" rows="6" required></textarea>
+      <label class="contact-form-label">Message <span class="required">(required)</span></label>
+      <textarea id="page-contact-message" class="contact-form-input contact-form-textarea" name="message" rows="8" required></textarea>
     </div>
     <button class="contact-form-submit" type="submit">Submit</button>
     <p class="contact-form-success" hidden>Thank you!</p>
@@ -214,7 +226,7 @@ def render_shell(title: str, description: str, body: str, output_path: str, acti
             external = item[2] if len(item) > 2 else False
             target = ' target="_blank" rel="noopener noreferrer"' if external or href.startswith("http") else ""
             h = href if href.startswith("http") else f"{prefix}{href}"
-            links.append(f'<a href="{h}" class="footer-link text-highlight"{target}>{label}</a>')
+            links.append(f'<a href="{h}" class="footer-link"{target}>{label}</a>')
         footer_cols.append('<div class="footer-links-col">\n            ' + "\n            ".join(links) + "\n          </div>")
     footer_nav = "\n          ".join(footer_cols)
 
@@ -246,7 +258,7 @@ def render_shell(title: str, description: str, body: str, output_path: str, acti
           <div class="header-title">
             <a id="site-title" href="{prefix}index.html">Kristina Vilyams</a>
           </div>
-          <div class="header-spacer" aria-hidden="true"></div>
+{HEADER_SOCIAL}
         </div>
       </div>
       <div class="header-inner header-inner--mobile">
@@ -277,18 +289,24 @@ def render_shell(title: str, description: str, body: str, output_path: str, acti
     </main>
     <footer id="footer" class="footer">
       <div class="footer-grid">
-        <h3 class="footer-name">Kristina Vilyams</h3>
-        <p class="footer-copyright">Copyright © 2026 Kristina Vilyams. All Rights Reserved.</p>
-        <nav class="footer-links" aria-label="Footer">
-          {footer_nav}
-        </nav>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M46.91,25.816c-0.073-1.597-0.326-2.687-0.697-3.641c-0.383-0.986-0.896-1.823-1.73-2.657c-0.834-0.834-1.67-1.347-2.657-1.73c-0.954-0.371-2.045-0.624-3.641-0.697C36.585,17.017,36.074,17,32,17s-4.585,0.017-6.184,0.09c-1.597,0.073-2.687,0.326-3.641,0.697c-0.986,0.383-1.823,0.896-2.657,1.73c-0.834,0.834-1.347,1.67-1.73,2.657c-0.371,0.954-0.624,2.045-0.697,3.641C17.017,27.415,17,27.926,17,32c0,4.074,0.017,4.585,0.09,6.184c0.073,1.597,0.326,2.687,0.697,3.641c0.383,0.986,0.896,1.823,1.73,2.657c0.834,0.834,1.67,1.347,2.657,1.73c0.954,0.371,2.045,0.624,3.641,0.697C27.415,46.983,27.926,47,32,47s4.585-0.017,6.184-0.09c1.597-0.073,2.687-0.326,3.641-0.697c0.986-0.383,1.823-0.896,2.657-1.73c0.834-0.834,1.347-1.67,1.73-2.657c0.371-0.954,0.624-2.045,0.697-3.641C46.983,36.585,47,36.074,47,32S46.983,27.415,46.91,25.816z M32,24.297c-4.254,0-7.703,3.449-7.703,7.703c0,4.254,3.449,7.703,7.703,7.703c4.254,0,7.703-3.449,7.703-7.703C39.703,27.746,36.254,24.297,32,24.297z M32,37c-2.761,0-5-2.239-5-5c0-2.761,2.239-5,5-5s5,2.239,5,5C37,34.761,34.761,37,32,37z M40.007,22.193c-0.994,0-1.8,0.806-1.8,1.8c0,0.994,0.806,1.8,1.8,1.8c0.994,0,1.8-0.806,1.8-1.8C41.807,22.999,41.001,22.193,40.007,22.193z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44H46v-9.5C46,29.8,45,26.2,39.5,26.2z"/></svg>
-          </a>
+        <div class="footer-left">
+          <div class="footer-brand">
+            <h3 class="footer-name">Kristina Vilyams</h3>
+            <p class="footer-copyright">Copyright © 2026 Kristina Vilyams. All Rights Reserved.</p>
+          </div>
+          <div class="footer-nav-block">
+            <nav class="footer-links" aria-label="Footer">
+              {footer_nav}
+            </nav>
+            <div class="footer-social">
+              <a href="https://www.instagram.com/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M46.91,25.816c-0.073-1.597-0.326-2.687-0.697-3.641c-0.383-0.986-0.896-1.823-1.73-2.657c-0.834-0.834-1.67-1.347-2.657-1.73c-0.954-0.371-2.045-0.624-3.641-0.697C36.585,17.017,36.074,17,32,17s-4.585,0.017-6.184,0.09c-1.597,0.073-2.687,0.326-3.641,0.697c-0.986,0.383-1.823,0.896-2.657,1.73c-0.834,0.834-1.347,1.67-1.73,2.657c-0.371,0.954-0.624,2.045-0.697,3.641C17.017,27.415,17,27.926,17,32c0,4.074,0.017,4.585,0.09,6.184c0.073,1.597,0.326,2.687,0.697,3.641c0.383,0.986,0.896,1.823,1.73,2.657c0.834,0.834,1.67,1.347,2.657,1.73c0.954,0.371,2.045,0.624,3.641,0.697C27.415,46.983,27.926,47,32,47s4.585-0.017,6.184-0.09c1.597-0.073,2.687-0.326,3.641-0.697c0.986-0.383,1.823-0.896,2.657-1.73c0.834-0.834,1.347-1.67,1.73-2.657c0.371-0.954,0.624-2.045,0.697-3.641C46.983,36.585,47,36.074,47,32S46.983,27.415,46.91,25.816z M32,24.297c-4.254,0-7.703,3.449-7.703,7.703c0,4.254,3.449,7.703,7.703,7.703c4.254,0,7.703-3.449,7.703-7.703C39.703,27.746,36.254,24.297,32,24.297z M32,37c-2.761,0-5-2.239-5-5c0-2.761,2.239-5,5-5s5,2.239,5,5C37,34.761,34.761,37,32,37z M40.007,22.193c-0.994,0-1.8,0.806-1.8,1.8c0,0.994,0.806,1.8,1.8,1.8c0.994,0,1.8-0.806,1.8-1.8C41.807,22.999,41.001,22.193,40.007,22.193z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/kristinavilyams/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44H46v-9.5C46,29.8,45,26.2,39.5,26.2z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
         <form class="newsletter-form" action="#" method="POST" data-form="newsletter">
           <p class="newsletter-description">Sign up with your email address to receive news and updates.</p>
