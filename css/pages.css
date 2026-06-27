@@ -1,0 +1,84 @@
+/* Squarespace-mirrored page content */
+.page-main {
+  padding-top: var(--header-height);
+}
+
+.sqs-page-content {
+  width: 100%;
+}
+
+.sqs-page-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sqs-page-content .page-section {
+  position: relative;
+}
+
+.sqs-page-content .content-wrapper {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding-left: var(--site-gutter);
+  padding-right: var(--site-gutter);
+}
+
+.sqs-page-content h1,
+.sqs-page-content h2 {
+  font-family: 'neuehaas-bold', sans-serif;
+  line-height: 1.2;
+}
+
+.sqs-page-content h3,
+.sqs-page-content h4 {
+  font-family: 'apercu-medium', sans-serif;
+}
+
+.sqs-page-content p,
+.sqs-page-content li {
+  font-family: 'apercu-regular', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.sqs-page-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.sqs-page-content [class*="fe-"] {
+  max-width: var(--site-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Portfolio grid on collaborations index */
+.sqs-page-content .portfolio-grid-item,
+.sqs-page-content .grid-item {
+  overflow: hidden;
+}
+
+.sqs-page-content .portfolio-grid-item img,
+.sqs-page-content .grid-image {
+  width: 100%;
+  display: block;
+}
+
+.header-nav-item a.is-active {
+  opacity: 0.55;
+}
+
+body.page {
+  background: var(--white);
+}
+
+body.page .header {
+  color: var(--black);
+  background: rgba(255, 255, 255, 0.97);
+}
+
+body.page .header .top-bun,
+body.page .header .patty,
+body.page .header .bottom-bun {
+  background: var(--black);
+}

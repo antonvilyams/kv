@@ -1,2 +1,4 @@
 .DS_Store
 node_modules/
+_fetch_*.html
+scripts/__pycache__/

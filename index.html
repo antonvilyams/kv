@@ -14,52 +14,61 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/kristina-vilyams.jpg">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
 <body class="homepage">
   <a href="#main-content" class="skip-link">Skip to Content</a>
 
   <div id="site-wrapper" class="site-wrapper">
-    <header id="header" class="header header--fixed">
+    <header id="header" class="header header--dynamic">
       <div class="header-inner header-inner--desktop">
         <div class="header-title-nav-wrapper">
-          <nav class="header-nav header-nav--left" aria-label="Primary">
+          <nav class="header-nav" aria-label="Primary">
             <ul class="header-nav-list">
-              <li class="header-nav-item"><a href="/about">About</a></li>
-              <li class="header-nav-item"><a href="/collaborations">Collaborations</a></li>
-              <li class="header-nav-item"><a href="/press">Press</a></li>
-              <li class="header-nav-item"><a href="/central-saint-martins">CSM</a></li>
-              <li class="header-nav-item"><a href="/contact">Contact</a></li>
+              <li class="header-nav-item"><a href="about.html">About</a></li>
+              <li class="header-nav-item"><a href="collaborations.html">Collaborations</a></li>
+              <li class="header-nav-item"><a href="press.html">Press</a></li>
+              <li class="header-nav-item"><a href="central-saint-martins.html">CSM</a></li>
+              <li class="header-nav-item"><a href="contact.html">Contact</a></li>
             </ul>
           </nav>
+
           <div class="header-title">
-            <a id="site-title" href="/">Kristina Vilyams</a>
+            <a id="site-title" href="index.html">Kristina Vilyams</a>
           </div>
+
+          <div class="header-spacer" aria-hidden="true"></div>
         </div>
       </div>
 
       <div class="header-inner header-inner--mobile">
         <button class="header-burger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
           <span class="header-burger-box">
-            <span class="header-burger-inner"></span>
+            <span class="top-bun"></span>
+            <span class="patty"></span>
+            <span class="bottom-bun"></span>
           </span>
         </button>
         <div class="header-title header-title--mobile">
-          <a href="/">Kristina Vilyams</a>
+          <a href="index.html">Kristina Vilyams</a>
         </div>
       </div>
     </header>
 
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-      <div class="mobile-menu-overlay"></div>
       <div class="mobile-menu-panel">
-        <button class="mobile-menu-close" type="button" aria-label="Close Menu">&times;</button>
+        <button class="mobile-menu-close" type="button" aria-label="Close Menu">
+          <span class="top-bun"></span>
+          <span class="patty"></span>
+          <span class="bottom-bun"></span>
+        </button>
         <nav aria-label="Mobile">
           <ul class="mobile-menu-list">
-            <li><a href="/about">About</a></li>
-            <li><a href="/collaborations">Collaborations</a></li>
-            <li><a href="/press">Press</a></li>
-            <li><a href="/central-saint-martins">CSM</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="collaborations.html">Collaborations</a></li>
+            <li><a href="press.html">Press</a></li>
+            <li><a href="central-saint-martins.html">CSM</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -124,28 +133,65 @@
         </div>
       </section>
 
-      <section class="section section--contact-cta" aria-label="Get in Touch">
+      <section class="section section--contact-cta" id="get-in-touch" aria-label="Get in Touch">
         <div class="section-content contact-cta-content">
-          <h2 class="contact-cta-title"><a href="/contact" class="text-highlight">Get in Touch</a></h2>
+          <h2 class="contact-cta-title"><a href="#contact-form" class="text-highlight text-highlight--light">Get in Touch</a></h2>
           <p class="contact-cta-text">We believe that the best ideas are born from collaboration. If you have a project in mind or a creative vision waiting to be brought to life, we would love to be a part of your journey.</p>
+
+          <form id="contact-form" class="contact-form" action="#" method="POST" data-form="contact">
+            <div class="contact-form-field">
+              <label class="contact-form-label" for="contact-name">Name</label>
+              <div class="contact-form-name-row">
+                <div class="contact-form-subfield">
+                  <label class="visually-hidden" for="contact-fname">First Name</label>
+                  <input id="contact-fname" class="contact-form-input" type="text" name="firstName" placeholder="First Name" required>
+                </div>
+                <div class="contact-form-subfield">
+                  <label class="visually-hidden" for="contact-lname">Last Name</label>
+                  <input id="contact-lname" class="contact-form-input" type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-field">
+              <label class="contact-form-label" for="contact-email">Email</label>
+              <input id="contact-email" class="contact-form-input" type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="contact-form-field">
+              <label class="contact-form-label" for="contact-message">Message</label>
+              <textarea id="contact-message" class="contact-form-input contact-form-textarea" name="message" placeholder="Message" rows="6" required></textarea>
+            </div>
+
+            <button class="contact-form-submit" type="submit">Submit</button>
+            <p class="contact-form-success" hidden>Thank you!</p>
+          </form>
         </div>
       </section>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-content">
+      <div class="footer-grid">
+        <h3 class="footer-name">Kristina Vilyams</h3>
+
         <p class="footer-copyright">Copyright © 2026 Kristina Vilyams. All Rights Reserved.</p>
 
         <nav class="footer-links" aria-label="Footer">
-          <a href="/about" class="footer-link text-highlight">About</a>
-          <a href="/contact" class="footer-link text-highlight">Contact</a>
-          <a href="/certifications" class="footer-link text-highlight">Certifications</a>
-          <a href="/collaborations" class="footer-link text-highlight">Collaborations</a>
-          <a href="https://app.uxcel.com/ux/kristinavilyams" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">Uxcel</a>
-          <a href="/press" class="footer-link text-highlight">Press</a>
-          <a href="https://xrbazaar.co/creators/kristinavilyams/" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">XR Bazaar</a>
-          <a href="https://read.cv/kristinavilyams" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">CV</a>
-          <a href="/virtual-try-on" class="footer-link text-highlight">Virtual Try-On</a>
+          <div class="footer-links-col">
+            <a href="about.html" class="footer-link text-highlight">About</a>
+            <a href="collaborations.html" class="footer-link text-highlight">Collaborations</a>
+            <a href="https://xrbazaar.co/creators/kristinavilyams/" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">XR Bazaar</a>
+          </div>
+          <div class="footer-links-col">
+            <a href="contact.html" class="footer-link text-highlight">Contact</a>
+            <a href="editorial-features.html" class="footer-link text-highlight">Virtual Try-On</a>
+            <a href="https://read.cv/kristinavilyams" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">CV</a>
+          </div>
+          <div class="footer-links-col">
+            <a href="certifications.html" class="footer-link text-highlight">Certifications</a>
+            <a href="press.html" class="footer-link text-highlight">Press</a>
+            <a href="https://app.uxcel.com/ux/kristinavilyams" class="footer-link text-highlight" target="_blank" rel="noopener noreferrer">Uxcel</a>
+          </div>
         </nav>
 
         <div class="footer-social">
@@ -157,7 +203,7 @@
           </a>
         </div>
 
-        <form class="newsletter-form" action="#" method="post" novalidate>
+        <form class="newsletter-form" action="#" method="POST" data-form="newsletter">
           <p class="newsletter-description">Sign up with your email address to receive news and updates.</p>
           <div class="newsletter-fields">
             <label class="visually-hidden" for="newsletter-email">Email Address</label>

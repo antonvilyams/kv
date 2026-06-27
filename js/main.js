@@ -3,12 +3,19 @@
   const burger = document.querySelector('.header-burger');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileClose = document.querySelector('.mobile-menu-close');
-  const mobileOverlay = document.querySelector('.mobile-menu-overlay');
   const carousel = document.querySelector('[data-carousel]');
+  const heroSection = document.querySelector('.section--hero');
 
   function updateHeader() {
     if (!header) return;
-    header.classList.toggle('header--scrolled', window.scrollY > 50);
+
+    const heroBottom = heroSection
+      ? heroSection.offsetTop + heroSection.offsetHeight
+      : window.innerHeight;
+    const isOverHero = window.scrollY < heroBottom - header.offsetHeight;
+
+    header.classList.toggle('header--dynamic', isOverHero);
+    header.classList.toggle('header--scrolled', !isOverHero);
   }
 
   function openMobileMenu() {
@@ -28,11 +35,11 @@
   }
 
   window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateHeader, { passive: true });
   updateHeader();
 
   burger?.addEventListener('click', openMobileMenu);
   mobileClose?.addEventListener('click', closeMobileMenu);
-  mobileOverlay?.addEventListener('click', closeMobileMenu);
 
   document.querySelectorAll('.mobile-menu-list a').forEach((link) => {
     link.addEventListener('click', closeMobileMenu);
@@ -80,20 +87,39 @@
 
     prevBtn?.addEventListener('click', () => goTo(index - 1));
     nextBtn?.addEventListener('click', () => goTo(index + 1));
-    window.addEventListener('resize', () => {
-      goTo(index);
-    });
+    window.addEventListener('resize', () => goTo(index));
 
     updateCarousel();
   }
 
-  const newsletterForm = document.querySelector('.newsletter-form');
-  newsletterForm?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const input = newsletterForm.querySelector('.newsletter-input');
-    if (input?.value) {
-      alert('Thank you!');
-      input.value = '';
-    }
+  function handleFormSubmit(form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (form.dataset.form === 'contact') {
+        const wrapper = form.closest('.contact-form') || form.parentElement;
+        if (wrapper) wrapper.classList.add('is-submitted');
+        const success = form.querySelector('.contact-form-success');
+        if (success) success.hidden = false;
+        return;
+      }
+
+      if (form.dataset.form === 'newsletter') {
+        const input = form.querySelector('input[type="email"]');
+        if (input?.value) {
+          alert('Thank you!');
+          input.value = '';
+        }
+      }
+    });
+  }
+
+  document.querySelectorAll('form[data-form]').forEach(handleFormSubmit);
+
+  document.querySelectorAll('a[href="#contact-form"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 })();
