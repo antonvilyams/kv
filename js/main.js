@@ -44,47 +44,51 @@
   if (carousel) {
     const track = carousel.querySelector('.carousel-track');
     const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const viewport = carousel.querySelector('.carousel-viewport');
     const prevBtn = carousel.querySelector('.carousel-arrow--prev');
     const nextBtn = carousel.querySelector('.carousel-arrow--next');
     const progressBar = carousel.querySelector('.carousel-progress-bar');
+    const gap = 20;
     let index = 0;
 
-    function getVisibleCount() {
-      const width = window.innerWidth;
-      if (width <= 480) return 1;
-      if (width <= 767) return 2;
-      if (width <= 1024) return 3;
-      return 5;
-    }
-
-    function getMaxIndex() {
-      return Math.max(0, slides.length - getVisibleCount());
+    function getSlideStep() {
+      const slide = slides[0];
+      if (!slide) return 0;
+      return slide.getBoundingClientRect().width + gap;
     }
 
     function updateCarousel() {
-      const slide = slides[0];
-      if (!slide || !track) return;
+      if (!track || !slides.length) return;
 
-      const gap = 20;
-      const slideWidth = slide.getBoundingClientRect().width + gap;
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
+      const step = getSlideStep();
+      track.style.transform = `translateX(-${index * step}px)`;
 
       if (progressBar) {
-        const maxIndex = getMaxIndex() || 1;
-        const progress = maxIndex === 0 ? 1 : index / maxIndex;
-        progressBar.style.transform = `scaleX(${0.2 + progress * 0.8})`;
+        const segmentWidth = 100 / slides.length;
+        progressBar.style.width = `${segmentWidth}%`;
+        progressBar.style.transform = `translateX(${index * 100}%)`;
       }
     }
 
     function goTo(newIndex) {
-      index = Math.max(0, Math.min(newIndex, getMaxIndex()));
+      const total = slides.length;
+      if (total === 0) return;
+
+      if (newIndex < 0) {
+        index = total - 1;
+      } else if (newIndex >= total) {
+        index = 0;
+      } else {
+        index = newIndex;
+      }
+
       updateCarousel();
     }
 
     prevBtn?.addEventListener('click', () => goTo(index - 1));
     nextBtn?.addEventListener('click', () => goTo(index + 1));
-    window.addEventListener('resize', () => goTo(index));
 
+    window.addEventListener('resize', () => updateCarousel(), { passive: true });
     updateCarousel();
   }
 

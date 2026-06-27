@@ -461,16 +461,15 @@ body.homepage .header.header--scrolled {
   padding: 5vmax 0 7vmax;
 }
 
-.section--press .carousel-quote,
-.section--inverse .carousel-quote {
-  color: #ffffff;
+.section--press {
+  padding: 5vmax 0 7vmax;
 }
 
 .press-carousel {
   position: relative;
-  max-width: var(--site-max-width);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 calc(var(--site-gutter) + 48px);
+  padding: 0 calc(var(--site-gutter) + 56px);
 }
 
 .carousel-viewport {
@@ -482,35 +481,24 @@ body.homepage .header.header--scrolled {
   gap: 20px;
   transition: transform 0.4s ease;
   will-change: transform;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .carousel-slide {
-  flex: 0 0 calc((100% - 80px) / 5);
+  flex: 0 0 calc((100% - 20px) / 1.12);
   min-width: 0;
-  text-align: center;
 }
 
 .carousel-slide img {
+  display: block;
   width: 100%;
-  max-width: 220px;
-  margin: 0 auto 1.25rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
-}
-
-.carousel-quote {
-  font-family: 'neuehaas-roman', sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: inherit;
-  margin: 0;
-  padding: 0 0.5rem;
 }
 
 .carousel-arrow {
   position: absolute;
-  top: 38%;
+  top: calc(50% - 15px);
   transform: translateY(-50%);
   z-index: 2;
   width: 48px;
@@ -547,6 +535,7 @@ body.homepage .header.header--scrolled {
 }
 
 .carousel-progress {
+  position: relative;
   margin-top: 30px;
   height: 2px;
   background: rgba(255, 255, 255, 0.15);
@@ -554,27 +543,36 @@ body.homepage .header.header--scrolled {
 }
 
 .carousel-progress-bar {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  width: 20%;
   background: #ffffff;
   transition: transform 0.4s ease;
-  transform-origin: left;
+  will-change: transform;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) {
   .carousel-slide {
-    flex: 0 0 calc((100% - 40px) / 3);
+    flex: 0 0 calc((100% - 40px) / 2.12);
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-slide {
+    flex: 0 0 calc((100% - 60px) / 3.12);
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-slide {
+    flex: 0 0 calc((100% - 80px) / 4.12);
   }
 }
 
 @media (max-width: 767px) {
   .press-carousel {
     padding: 0 calc(var(--mobile-gutter) + 40px);
-  }
-
-  .carousel-slide {
-    flex: 0 0 calc((100% - 20px) / 2);
   }
 
   .carousel-arrow {
@@ -593,7 +591,7 @@ body.homepage .header.header--scrolled {
 
 @media (max-width: 480px) {
   .carousel-slide {
-    flex: 0 0 80%;
+    flex: 0 0 82%;
   }
 }
 
