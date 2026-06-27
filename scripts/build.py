@@ -241,8 +241,8 @@ def render_shell(title: str, description: str, body: str, output_path: str, acti
   <meta name="description" content="{description}">
   <link rel="icon" type="image/x-icon" href="{prefix}assets/images/favicon.ico">
   <link rel="canonical" href="{canonical}">
-  <link rel="stylesheet" href="{prefix}css/styles.css?v=4">
-  <link rel="stylesheet" href="{prefix}css/pages.css?v=4">
+  <link rel="stylesheet" href="{prefix}css/styles.css?v=5">
+  <link rel="stylesheet" href="{prefix}css/pages.css?v=5">
 </head>
 <body class="{body_cls}">
   <a href="#main-content" class="skip-link">Skip to Content</a>
@@ -320,7 +320,7 @@ def render_shell(title: str, description: str, body: str, output_path: str, acti
       </div>
     </footer>
   </div>
-  <script src="{prefix}js/main.js?v=4"></script>
+  <script src="{prefix}js/main.js?v=5"></script>
 </body>
 </html>"""
 
